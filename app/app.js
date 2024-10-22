@@ -1,8 +1,9 @@
 import http from 'http';
+import {config} from 'dotenv' 
 import { MongoClient } from 'mongodb';
 import { fetchAndSaveAllData } from './weatherETL.js'; 
 
-const uri = "mongodb://mongodb:27017";
+const uri = process.env.DB_URI;
 const client = new MongoClient(uri);
 
 const server = http.createServer(async (req, res) => {
