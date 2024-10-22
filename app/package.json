@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "mongodb": "^4.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "keywords": [],
+  "author": "Emilio Munoz Rivera",
+  "license": "ISC",
+  "description": ""
+}
