@@ -1,0 +1,33 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - my-network
+
+  nodejs:
+    build: 
+      context: ./app  # Usa el Dockerfile dentro de la carpeta 'app'
+    container_name: nodejs
+    volumes:
+      - ./app:/usr/src/app  # Monta el código de la app en el contenedor
+    working_dir: /usr/src/app  # Directorio de trabajo dentro del contenedor
+    command: npm start  # Comando para iniciar la app
+    ports:
+      - "3000:3000"  # Exponer el puerto de la app
+    depends_on:
+      - mongodb  # Asegura que MongoDB se inicie antes de la app Node.js
+    networks:
+      - my-network
+
+volumes:
+  mongo-data:  # Volumen para persistencia de datos de MongoDB
+
+networks:
+  my-network:  # Red compartida entre los servicios
+
+
